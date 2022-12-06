@@ -1,0 +1,46 @@
+:root {
+  font-family: "Oxygen", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+}
+
+.half {
+  width: 60vw;
+}
+
+.display-cv {
+  width: 40vw;
+
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cv {
+  background-color: cornflowerblue;
+  width: 90%;
+  height: 90%;
+}
+
+.displayed-top {
+  background-color: brown;
+  padding: 2%;
+  padding-bottom: 3%;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+}
+
+.displayed-name {
+  font-size: 2.5rem;
+  overflow-wrap: break-word;
+  font-weight: bold;
+}
