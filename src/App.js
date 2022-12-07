@@ -8,7 +8,12 @@ export let basicInfo = [];
 export let experience = [];
 export let education = [];
 
+let num = 0
+
 function App() {
+  const [addWork, setAddWork] = useState([]);
+  const [displayWork, setDisplayWOrk] = useState([]);
+
   const [workVisible, setWorkVisible] = useState(false);
   const [schoolVisible, setSchoolVisible] = useState(false);
   const [firstNameInput, setFirstNameInput] = useState("");
@@ -21,7 +26,10 @@ function App() {
 
   let fullName = firstNameInput + " " + lastNameInput;
   const workClick = () => {
-    setWorkVisible(true);
+    setAddWork(addWork.concat(<AddEducation key={num}/>))
+    setDisplayWOrk(addWork.key=num)
+    console.log(<AddEducation/>)
+    num+=1
   };
   const schoolClick = () => {
     <AddEducation />;
@@ -41,10 +49,8 @@ function App() {
 
         <div className="work-experience">
           <button onClick={workClick}>+ Add Experience</button>
+          {addWork}
           <div>
-            {workVisible ? (
-              <AddExperience vis={setWorkVisible}></AddExperience>
-            ) : null}
           </div>
         </div>
         <div className="school-info">
@@ -80,12 +86,7 @@ function App() {
             <div className="work">
               <div className="work-header">Professional Experience</div>
               <div className="experience-container">
-                <div className="experience-content">
-                  <div className="company">
-                    <div>Test Company:</div>
-                    <div>Principal Engineer</div> - 12/5/2000 - 12/5/2022
-                  </div>
-                </div>
+                {displayWork}
               </div>
             </div>
 
