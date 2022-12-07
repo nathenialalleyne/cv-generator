@@ -15,12 +15,16 @@ function App() {
   const [lastNameInput, setLastNameInput] = useState("");
   const [jobTitleInput, setJobTitleInput] = useState("");
 
+  const [emailInput, setEmailInput] = useState("");
+  const [phoneNumberInput, setPhoneNumberInput] = useState("");
+  const [linkedInInput, setLinkedInInput] = useState("");
+
   let fullName = firstNameInput + " " + lastNameInput;
   const workClick = () => {
     setWorkVisible(true);
   };
   const schoolClick = () => {
-    setSchoolVisible(true);
+    <AddEducation />;
   };
 
   return (
@@ -30,6 +34,9 @@ function App() {
           firstName={setFirstNameInput}
           lastName={setLastNameInput}
           title={setJobTitleInput}
+          email={setEmailInput}
+          phone={setPhoneNumberInput}
+          linkedIn={setLinkedInInput}
         />
 
         <div className="work-experience">
@@ -41,12 +48,13 @@ function App() {
           </div>
         </div>
         <div className="school-info">
-          <button onClick={schoolClick}>+ Add School</button>
-          <div>
-            {schoolVisible ? (
-              <AddEducation vis={setSchoolVisible}></AddEducation>
-            ) : null}
-          </div>
+          <button
+            onClick={() => {
+              <AddEducation />;
+            }}
+          >
+            + Add School
+          </button>
         </div>
       </div>
       <div className="display-cv">
@@ -55,11 +63,41 @@ function App() {
             <div className="displayed-name">{fullName}</div>
             <div className="job-title">{jobTitleInput}</div>
           </div>
+
           <div className="experience"></div>
           <div className="info">
             <div className="contact">
-              Contact
-              <div className="email">testemail@gmail.com</div>
+              <div className="contact-header">Contact</div>
+              <div className="contact-content">
+                <div className="email">Email: {emailInput}</div>
+                <div className="phone-number">
+                  Phone Number: {phoneNumberInput}
+                </div>
+                <div className="linkedIn">LinkedIn: {linkedInInput}</div>
+              </div>
+            </div>
+
+            <div className="work">
+              <div className="work-header">Professional Experience</div>
+              <div className="experience-container">
+                <div className="experience-content">
+                  <div className="company">
+                    <div>Test Company:</div>
+                    <div>Principal Engineer</div> - 12/5/2000 - 12/5/2022
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="school">
+              <div className="school-header">Education</div>
+              <div className="school-container">
+                <div className="school-content">
+                  <div className="school-name">Test School</div>
+                  <div className="school-study">Degree in Computer Science</div>
+                  <div className="school-date">12/5/2000 - 12/5/2004</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

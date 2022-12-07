@@ -18,7 +18,7 @@ body {
 
 .display-cv {
   width: 40vw;
-
+  height: auto;
   background-color: yellow;
   display: flex;
   justify-content: center;
@@ -28,7 +28,10 @@ body {
 .cv {
   background-color: cornflowerblue;
   width: 90%;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
   height: 90%;
+  max-height: auto;
 }
 
 .displayed-top {
@@ -43,4 +46,46 @@ body {
   font-size: 2.5rem;
   overflow-wrap: break-word;
   font-weight: bold;
+}
+
+.contact,
+.work,
+.school {
+  padding: 2%;
+  padding-bottom: 0;
+}
+
+.contact-content,
+.experience-content,
+.school-content {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid black;
+}
+
+.contact-header,
+.work-header,
+.school-header {
+  padding-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 100;
+  border-bottom: 1px solid black;
+}
+
+/* .company-name, */
+.school-name {
+  font-size: 1.5rem;
+}
+
+.company {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+.company > div {
+  font-size: 1.3rem;
 }
