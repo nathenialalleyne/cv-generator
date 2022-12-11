@@ -1,18 +1,23 @@
 import { render } from "@testing-library/react";
 import { useState } from "react";
+import { useEffect } from "react";
+
 import { GeneralInfo } from "./components/General";
 import { AddExperience } from "./components/Work";
 import { AddEducation } from "./components/Education";
+import { AddWorkItem } from "./components/ShowWork";
 
 export let basicInfo = [];
 export let experience = [];
 export let education = [];
 
-let num = 0
+let num = 0;
 
 function App() {
+  const [companyName, setCompanyName] = useState("");
   const [addWork, setAddWork] = useState([]);
   const [displayWork, setDisplayWOrk] = useState([]);
+  const [workCV, setWorkCV] = useState();
 
   const [workVisible, setWorkVisible] = useState(false);
   const [schoolVisible, setSchoolVisible] = useState(false);
@@ -25,12 +30,23 @@ function App() {
   const [linkedInInput, setLinkedInInput] = useState("");
 
   let fullName = firstNameInput + " " + lastNameInput;
-  const workClick = () => {
-    setAddWork(addWork.concat(<AddEducation key={num}/>))
-    setDisplayWOrk(addWork.key=num)
-    console.log(<AddEducation/>)
-    num+=1
+  const workClick = async () => {
+    setAddWork(
+      addWork.concat(
+        <AddExperience
+          key={num}
+          set={setCompanyName}
+          onChangeValue={(e) => {
+            setCompanyName(e.value);
+          }}
+        />
+      )
+    );
+    setDisplayWOrk(addWork);
+    setWorkCV(<AddWorkItem key={num} name={companyName} />);
+    num += 1;
   };
+
   const schoolClick = () => {
     <AddEducation />;
   };
@@ -48,10 +64,15 @@ function App() {
         />
 
         <div className="work-experience">
-          <button onClick={workClick}>+ Add Experience</button>
+          <button
+            onClick={() => {
+              workClick();
+            }}
+          >
+            + Add Experience
+          </button>
           {addWork}
-          <div>
-          </div>
+          <div></div>
         </div>
         <div className="school-info">
           <button
@@ -85,9 +106,7 @@ function App() {
 
             <div className="work">
               <div className="work-header">Professional Experience</div>
-              <div className="experience-container">
-                {displayWork}
-              </div>
+              <div className="experience-container">{workCV}</div>
             </div>
 
             <div className="school">

@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { experience } from "../App";
+import { AddWorkItem } from "./ShowWork";
 
 export function AddExperience(prop) {
   let visibility = prop.vis;
+  let setCompanyInput = prop.set;
 
   const deleteWork = () => {
     visibility(false);
@@ -30,11 +32,13 @@ export function AddExperience(prop) {
 
     experience.push(workObj);
   };
+
+  let nameChange = (x) => setCompanyInput(x.target.value);
   return (
     <div>
       <div className="company-name-wrapper">
         <label htmlFor="company-name">Company Name</label>
-        <input id="company-name"></input>
+        <input onChange={nameChange} id="company-name"></input>
       </div>
       <div className="date-started-wrapper">
         <label htmlFor="date-started">Date Started</label>
